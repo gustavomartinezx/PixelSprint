@@ -7,8 +7,15 @@ export default function Home() {
     <div className="flex min-h-dvh flex-col">
       <header className="border-b-4 border-black bg-surface">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
-          <h1 className="font-pixel text-base text-primary sm:text-lg">
-            PixelSprint
+          <h1>
+            <Image
+              src="/brand/logo.png"
+              alt="PixelSprint"
+              width={156}
+              height={64}
+              priority
+              className="pixelated"
+            />
           </h1>
           <Badge tone="accent">Semana</Badge>
         </div>
