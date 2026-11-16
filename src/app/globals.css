@@ -1,24 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Tokens do PixelSprint. Tema único escuro "arcade" (decisão PS-002).
+ * Espaçamento: escala padrão do Tailwind (--spacing = 4px).
+ * Contraste: texto e muted ≥ 7:1 sobre bg/surface; primary/danger/success usam texto ink-dark.
+ */
+@theme {
+  --color-bg: #14121f;
+  --color-surface: #221e33;
+  --color-surface-2: #2e2945;
+  --color-line: #6b6396;
+  --color-ink: #f4f1ff;
+  --color-ink-muted: #c4bce3;
+  --color-ink-dark: #14121f;
+  --color-primary: #ffcc33;
+  --color-accent: #4fd1c5;
+  --color-success: #6ee7a0;
+  --color-danger: #ff7a7a;
+  --color-focus: #7dd3fc;
+  /* Grama da pista (sweetie16); sprites em public/sprites/track. */
+  --color-track: #38b764;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  /* --font-pixel vem do next/font (layout.tsx); só para títulos, botões e badges. */
+  --font-pixel: var(--font-press-start), monospace;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --shadow-pixel: 4px 4px 0 0 #000;
+  --shadow-pixel-sm: 2px 2px 0 0 #000;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Sprites nítidos em escala inteira, sem interpolação. */
+@utility pixelated {
+  image-rendering: pixelated;
+}
+
+/* Borda "pixelada": sem raio, 2px sólida, sombra dura. */
+@utility pixel-border {
+  border: 2px solid var(--color-line);
+  border-radius: 0;
+  box-shadow: var(--shadow-pixel);
 }
